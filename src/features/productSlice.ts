@@ -4,6 +4,7 @@ import { ProductInitialState } from "../models/product";
 const initialState: ProductInitialState = {
   products: [],
   status: undefined,
+  error: "",
 };
 
 export const fetchProducts = createAsyncThunk("fetchProducts", async () => {

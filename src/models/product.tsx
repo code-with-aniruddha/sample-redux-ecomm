@@ -16,4 +16,5 @@ export interface Rating {
 export interface ProductInitialState {
   products: Product[];
   status: undefined | string;
+  error: string;
 }

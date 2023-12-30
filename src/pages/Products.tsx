@@ -4,12 +4,12 @@ import Error from "../components/Error";
 import { useEffect } from "react";
 import { fetchProducts } from "../features/productSlice";
 import { Product as ProductInterface } from "../models/product";
-import { store as RootReducer } from "../app/store";
+import { RootState, AppDispatch } from "../app/store";
 
 const Products = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const { products, status, error } = useSelector(
-    (store: typeof RootReducer) => store.products
+    (store: RootState) => store.products
   );
   console.log(error);
   useEffect(() => {

@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Nav from "./components/nav.tsx";
-import Products from "./pages/Products.tsx";
+import Products from "./pages/Products";
 import Cart from "./pages/Cart";
 import "./App.css";
 

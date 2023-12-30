@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
 import "../css/nav.css";
 import { useSelector } from "react-redux";
+import { RootState } from "../app/store";
 
 const Nav = () => {
-  const { totalCount } = useSelector((store) => store.cart);
+  const { totalCount } = useSelector((store: RootState) => store.cart);
   return (
     <div className="nav-wrap d-flex justify-content-between">
       <h2>
