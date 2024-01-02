@@ -1,10 +1,10 @@
-import { useDispatch } from "react-redux";
+import { useAppDispatch } from "../app/hooks";
 import { addToCart } from "../features/cartSlice";
-import { Product } from "../models/product";
+import { Product as ProductInterface } from "../models/product";
 
-const Product = ({ product }: { product: Product }) => {
-  const dispatch = useDispatch();
-  const onCartClick = (product: Product) => {
+const Product = ({ product }: { product: ProductInterface }) => {
+  const dispatch = useAppDispatch();
+  const onCartClick = (product: ProductInterface) => {
     dispatch(addToCart(product));
   };
   return (

@@ -1,16 +1,13 @@
-import { useSelector, useDispatch } from "react-redux";
+import { useAppDispatch, useAppSelector } from "../app/hooks";
 import Product from "../components/Product";
 import Error from "../components/Error";
 import { useEffect } from "react";
 import { fetchProducts } from "../features/productSlice";
 import { Product as ProductInterface } from "../models/product";
-import { RootState, AppDispatch } from "../app/store";
 
 const Products = () => {
-  const dispatch = useDispatch<AppDispatch>();
-  const { products, status, error } = useSelector(
-    (store: RootState) => store.products
-  );
+  const dispatch = useAppDispatch();
+  const { products, status, error } = useAppSelector((store) => store.products);
   console.log(error);
   useEffect(() => {
     dispatch(fetchProducts());

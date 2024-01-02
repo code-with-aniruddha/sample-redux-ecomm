@@ -1,6 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
+import type { PayloadAction } from "@reduxjs/toolkit";
+import { Product } from "../models/product";
 
-const initialState = {
+interface cartInitialliser {
+  items: Product[];
+  totalCount: number;
+}
+
+const initialState: cartInitialliser = {
   items: [],
   totalCount: 0,
 };
@@ -9,15 +16,15 @@ export const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    addToCart: (state, action) => {
+    addToCart: (state, action: PayloadAction<Product>) => {
       state.totalCount = state.totalCount + 1;
       const matchItem = state.items.findIndex(
-        (item) => item.id === action.payload.id
+        (item: Product) => item.id === action.payload.id
       );
-      if (matchItem > -1) {
+      if (matchItem > -1 && state.items[matchItem]) {
         state.items[matchItem] = {
           ...state.items[matchItem],
-          count: state.items[matchItem].count + 1,
+          count: (state.items[matchItem].count as number) + 1,
         };
       } else {
         action.payload = { ...action.payload, count: 1 };
@@ -25,7 +32,7 @@ export const cartSlice = createSlice({
       }
     },
     removeFromCart: (state, action) => {
-      state.items.filter((item) => item.id !== action.payload);
+      state.items.filter((item: Product) => item.id !== action.payload);
     },
   },
 });
